@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 export default function LogoUpload({
-  logo,
   setLogo,
   logoSize,
   setLogoSize,

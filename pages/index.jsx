@@ -58,7 +58,6 @@ export default function Home() {
               setLogoMargin={setLogoMargin}
             />
             <LogoUpload
-              logo={logo}
               setLogo={setLogo}
               logoSize={logoSize}
               setLogoSize={setLogoSize}
