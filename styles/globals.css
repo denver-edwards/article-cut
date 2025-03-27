@@ -1,9 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+@font-face {
+  font-family: "OldNewspaper";
+  src: url("/fonts/OldNewspaperTypes.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "TimesNewRoman";
+  src: url("/fonts/times-new-roman.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
