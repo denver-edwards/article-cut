@@ -78,6 +78,8 @@ export default function Home() {
               logo={logo}
               logoSize={logoSize}
               logoPosition={logoPosition}
+              padding={padding}
+              logoMargin={logoMargin}
             />
 
             <Toolbar previewRef={previewRef} />

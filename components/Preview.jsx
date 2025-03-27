@@ -11,6 +11,8 @@ const Preview = forwardRef(
       logo,
       logoSize,
       logoPosition,
+      padding = { horizontal: 20, vertical: 20 },
+      logoMargin = { horizontal: 10, vertical: 10 },
     },
     ref
   ) => {
@@ -20,12 +22,44 @@ const Preview = forwardRef(
       objectFit: "contain",
     };
 
+    // Calculate logo margins based on position
+    const getLogoMargin = () => {
+      switch (logoPosition) {
+        case "left":
+          return {
+            marginRight: `${logoMargin.horizontal}px`,
+            marginTop: 0,
+            marginBottom: 0,
+          };
+        case "right":
+          return {
+            marginLeft: `${logoMargin.horizontal}px`,
+            marginTop: 0,
+            marginBottom: 0,
+          };
+        case "top":
+          return {
+            marginBottom: `${logoMargin.vertical}px`,
+            marginLeft: 0,
+            marginRight: 0,
+          };
+        case "bottom":
+          return {
+            marginTop: `${logoMargin.vertical}px`,
+            marginLeft: 0,
+            marginRight: 0,
+          };
+        default:
+          return {};
+      }
+    };
+
     return (
       <div className="mb-6">
         <h2 className="text-xl font-semibold mb-4">Preview</h2>
         <div
           ref={ref}
-          className="p-8 border-2 border-gray-300 rounded-lg relative"
+          className="border-2 border-gray-300 rounded-lg relative"
           style={{
             backgroundColor,
             minHeight: "300px",
@@ -37,13 +71,17 @@ const Preview = forwardRef(
             alignItems: "center",
             justifyContent: "center",
             gap: "20px",
+            padding: `${padding.vertical}px ${padding.horizontal}px`,
           }}
         >
           {logo && (logoPosition === "left" || logoPosition === "top") && (
             <img
               src={typeof logo === "string" ? logo : URL.createObjectURL(logo)}
               alt="Newspaper Logo"
-              style={logoStyle}
+              style={{
+                ...logoStyle,
+                ...getLogoMargin(),
+              }}
             />
           )}
 
@@ -65,7 +103,10 @@ const Preview = forwardRef(
             <img
               src={typeof logo === "string" ? logo : URL.createObjectURL(logo)}
               alt="Newspaper Logo"
-              style={logoStyle}
+              style={{
+                ...logoStyle,
+                ...getLogoMargin(),
+              }}
             />
           )}
         </div>
